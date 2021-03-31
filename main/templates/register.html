@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock %}
+{% block body %}
+<style>
+    upper {
+        text-transform: uppercase;
+    }
+</style>
+
+<div class="border shadow col-lg-6 p-5 mt-2 mx-auto" style="border-radius:1rem">
+    <div class="display-4 float-center">Register</div>
+    <hr>
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show " {% endif %}
+        role="alert">
+
+        <strong>
+            <upper>{{ message.tags }}! </upper>
+        </strong>{{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form action="" class="form-horizontal" method="post">
+        {% csrf_token %}
+        <div class="m-2">
+            <input type="text" class="form-control" placeholder="Firstname" name="firstname" id="">
+        </div>
+        <div class="m-2">
+            <input type="text" class="form-control" placeholder="Lastname" name="lastname" id="">
+        </div>
+        <div class="m-2">
+            <input type="email" class="form-control" placeholder="Email" name="email" id="">
+        </div>
+        <div class="m-2">
+            <input type="password" class="form-control" placeholder="Password" name="password" id="">
+        </div>
+        <div class="m-2">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
